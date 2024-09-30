@@ -14,7 +14,7 @@ namespace E_Commerce.Persistence.Repositories
 
         public IProductRepository CreateProductRepository()
         {
-            return new ProductRepository(_context); // Usa el repositorio normal o una variante si es necesario
+            return new ProductRepository(_context); 
         }
     }
 }

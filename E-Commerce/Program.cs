@@ -8,6 +8,12 @@ using E_Commerce.Persistence.IoC;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var environment = builder.Environment.EnvironmentName;
+builder.Configuration
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
 
 // Configurar el DbContext para MySQL u Oracle
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
