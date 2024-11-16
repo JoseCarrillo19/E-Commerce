@@ -15,7 +15,6 @@ builder.Configuration
     .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables();
 
-// Configurar el DbContext para MySQL u Oracle
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     var databaseType = builder.Configuration["DatabaseType"];
@@ -40,7 +39,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     }
 });
 
-// Registrar fábricas de repositorios usando el patrón Abstract Factory
 builder.Services.AddScoped<IRepositoryFactory>(serviceProvider =>
 {
     var context = serviceProvider.GetRequiredService<ApplicationDbContext>();

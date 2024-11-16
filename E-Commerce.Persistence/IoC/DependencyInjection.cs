@@ -14,7 +14,6 @@ namespace E_Commerce.Persistence.IoC
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            // Registrar repositorios
             services.AddScoped<IProductRepository, ProductRepository>();
             return services;
         }
