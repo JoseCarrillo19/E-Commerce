@@ -21,7 +21,7 @@ namespace E_Commerce.Persistence.Repositories
 
         public async Task<Product> GetByIdAsync(int id)
         {
-            return await _context.Products.FindAsync(id);
+            return await _context.Products.FindAsync(id) ?? throw new Exception("Product not found");
         }
 
         public async Task AddAsync(Product product)
